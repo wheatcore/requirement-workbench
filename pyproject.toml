@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "requirement-workbench-local"
+version = "0.6.3"
+description = "Local requirement-to-commits web workbench powered by Codex or Claude Code CLI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+pdf = ["pdfminer.six>=20221105"]
+
+[project.scripts]
+requirement-workbench = "requirement_workbench.server:main"
+
+[tool.setuptools]
+packages = ["requirement_workbench", "requirement_workbench.default_skills", "requirement_workbench.default_skills.frontend", "requirement_workbench.default_skills.backend"]
+
+[tool.setuptools.package-data]
+requirement_workbench = ["*.html", "*.json", "default_skills/*/*/*.md"]

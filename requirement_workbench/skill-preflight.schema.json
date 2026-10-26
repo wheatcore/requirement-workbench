@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {"type": "string", "enum": ["ready", "blocked"]},
+    "applied_skills": {"type": "array", "items": {"type": "string"}},
+    "instructions": {"type": "string"},
+    "verification": {"type": "string"},
+    "branch_action": {"type": "string", "enum": ["keep", "create", "switch"]},
+    "branch_name": {"type": "string"},
+    "branch_reason": {"type": "string"},
+    "task_guidance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_index": {"type": "integer"},
+          "instructions": {"type": "string"},
+          "verification": {"type": "string"}
+        },
+        "required": ["task_index", "instructions", "verification"],
+        "additionalProperties": false
+      }
+    },
+    "reason": {"type": "string"}
+  },
+  "required": ["status", "applied_skills", "instructions", "verification", "branch_action", "branch_name", "branch_reason", "task_guidance", "reason"],
+  "additionalProperties": false
+}

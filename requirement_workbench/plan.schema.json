@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "missing_input", "summary", "tasks", "risks"],
+  "properties": {
+    "status": { "type": "string", "enum": ["ready", "needs_input"] },
+    "missing_input": { "type": "string" },
+    "summary": { "type": "string" },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "tasks": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "description", "acceptance", "commit_message", "skills"],
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "acceptance": { "type": "string" },
+          "commit_message": { "type": "string" },
+          "skills": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
